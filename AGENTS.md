@@ -28,3 +28,12 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Personal details and links live only in `src/lib/site.ts`; page content lives in `src/data/*` — components read from these so content edits never touch layout code.
+- Never fabricate credentials, dates, clients, metrics or testimonials; missing content uses the labelled `PlaceholderTag` / `ImagePlaceholder` components so placeholders stay obvious.
+- Design tokens (colors, glass utilities, keyframes) live in `src/styles.css`; components use semantic classes (`bg-primary`, `text-gold`, `glass`) so the palette can change in one place.
+- Contact form validation is the shared zod schema in `src/lib/contact-schema.ts`, used by both the form and the server function, and mirrored by database CHECK constraints.
+- Contact messages are inserted from a server function with the publishable key under an insert-only RLS policy — no read access from the site.
+- Page entrance motion skips the first load (intro loader covers it) so SSR content is never hidden; reduced-motion is respected via `MotionConfig reducedMotion="user"` and CSS media queries.
