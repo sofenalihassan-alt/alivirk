@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import portrait from "@/assets/ali-hassan-portrait.webp.asset.json";
+import portrait from "@/assets/ali-hassan-portrait.webp";
 import { site } from "@/lib/site";
 
 /** Unframed photographic cover, with a restrained frosted caption. */
