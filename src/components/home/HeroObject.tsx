@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import portrait from "@/assets/ali-hassan-portrait.webp.asset.json";
+import portrait from "@/assets/ali-hassan-portrait.webp";
 import { site } from "@/lib/site";
 
 /** Unframed photographic cover, with a restrained frosted caption. */
@@ -14,7 +14,7 @@ export function HeroObject() {
     <div ref={ref} className="portrait-cover relative size-full">
       <motion.img
         src={portrait.url}
-        alt="Portrait of Ali Hassan wearing a blue kurta"
+        alt="Portrait of Ali Hassan"
         width={900}
         height={1037}
         fetchPriority="high"
