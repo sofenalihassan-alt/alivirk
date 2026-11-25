@@ -33,7 +33,8 @@ export const Route = createFileRoute("/projects/")({
 
 function ProjectsPage() {
   const [filter, setFilter] = useState<string>("All");
-  const flagship = projects.find((p) => p.featured)!;
+  const flagship = projects.find((p) => p.featured);
+  if (!flagship) return null;
   const rest = projects.filter((p) => !p.featured);
   const visible = filter === "All" ? rest : rest.filter((p) => p.category === filter);
   const showFlagship = filter === "All" || filter === flagship.category;
@@ -62,11 +63,11 @@ function ProjectsPage() {
                     aria-selected={on}
                     onClick={() => setFilter(f)}
                     className={cn(
-                      "relative min-h-11 rounded-full px-5 text-sm whitespace-nowrap transition-colors",
-                      on ? "text-primary-foreground" : "glass-subtle text-muted-foreground hover:text-foreground",
+                      "relative min-h-11 rounded-sm px-5 text-sm whitespace-nowrap transition-colors",
+                      on ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground",
                     )}
                   >
-                    {on && <motion.span layoutId="project-filter" className="absolute inset-0 rounded-full bg-primary" transition={{ type: "spring", stiffness: 400, damping: 32 }} />}
+                    {on && <motion.span layoutId="project-filter" className="absolute inset-0 rounded-sm bg-primary" transition={{ type: "spring", stiffness: 400, damping: 32 }} />}
                     <span className="relative">{f}</span>
                   </button>
                 );
@@ -83,9 +84,8 @@ function ProjectsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="glass relative mt-10 grid gap-10 overflow-hidden rounded-[2rem] p-6 sm:p-10 lg:grid-cols-12 lg:items-center"
+              className="flagship-spread relative mt-10 grid gap-10 border-y border-hairline py-12 lg:grid-cols-12 lg:items-center"
             >
-              <div className="pointer-events-none absolute -top-24 -left-24 size-80 rounded-full bg-gold/10 blur-3xl" aria-hidden="true" />
               <div className="relative lg:col-span-5">
                 <span className="eyebrow text-[0.62rem] text-gold">Flagship · {flagship.category}</span>
                 <h2 className="mt-4 text-5xl font-medium sm:text-6xl">{flagship.title}</h2>
@@ -113,7 +113,7 @@ function ProjectsPage() {
           )}
         </AnimatePresence>
 
-        <motion.ul layout className="mt-6 grid gap-6 md:grid-cols-2">
+        <motion.ul layout className="project-archive mt-12 grid gap-x-14 gap-y-12 md:grid-cols-[1.2fr_1fr]">
           <AnimatePresence mode="popLayout">
             {visible.map((p) => (
               <motion.li
@@ -155,14 +155,14 @@ function ProjectCard({ project: p }: { project: Project }) {
     <Link
       to="/projects/$slug"
       params={{ slug: p.slug }}
-      className="group flex h-full flex-col rounded-[1.75rem] border border-hairline bg-glass p-4 transition-colors duration-500 hover:border-gold/40 sm:p-5"
+      className="group flex h-full flex-col border-t border-hairline pt-5 transition-colors duration-500 hover:border-gold"
     >
-      <div className="overflow-hidden rounded-2xl">
+      <div className="overflow-hidden rounded-sm">
         <div className="transition-transform duration-700 group-hover:scale-[1.03]">
           <ProjectPreview project={p} />
         </div>
       </div>
-      <div className="flex flex-1 flex-col px-2 pt-6 pb-2">
+      <div className="flex flex-1 flex-col pt-6 pb-2">
         <div className="flex flex-wrap items-center gap-2">
           <span className="eyebrow text-[0.6rem]">{p.category}</span>
           {p.isPlaceholder && <PlaceholderTag />}

@@ -29,7 +29,7 @@ export function SectionHeading({
           {eyebrow}
         </p>
       </Reveal>
-      <h2 className="mt-5 text-4xl font-medium leading-[1.02] sm:text-5xl lg:text-6xl">
+      <h2 className="section-title mt-5 font-medium leading-[1.12]">
         <SplitText text={title} />
         {accent && (
           <>

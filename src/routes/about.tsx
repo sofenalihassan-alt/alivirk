@@ -55,7 +55,7 @@ function AboutPage() {
       {/* Background — editorial split */}
       <section className="container-page grid gap-12 lg:grid-cols-12" aria-labelledby="bg-title">
         <div ref={imgRef} className="relative lg:col-span-5">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] lg:sticky lg:top-28">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-sm lg:sticky lg:top-28">
             <motion.img
               src={portrait.url}
               alt="Ali Hassan"
@@ -63,10 +63,10 @@ function AboutPage() {
               height={1037}
               loading="lazy"
               style={{ y, scale: 1.18 }}
-              className="size-full object-cover object-top grayscale-[0.4]"
+              className="size-full object-cover object-top"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,oklch(0.135_0.006_275/90%))]" />
-            <div className="glass absolute right-4 bottom-4 left-4 rounded-2xl p-4">
+            <div className="absolute inset-0 portrait-shade" />
+            <div className="glass-lens absolute right-4 bottom-4 left-4 rounded-sm p-4">
               <p className="eyebrow text-[0.6rem] text-gold">Ali Hassan</p>
               <p className="mt-1 text-sm">ICT Apprentice · Freelancer · Computing student</p>
             </div>
@@ -89,10 +89,10 @@ function AboutPage() {
             </Reveal>
           </div>
 
-          <Stagger className="grid gap-4 sm:grid-cols-3">
+          <Stagger className="academic-ledger grid gap-6 border-y border-hairline py-8 sm:grid-cols-3">
             {academicFacts.map((f) => (
-              <StaggerItem key={f.label} className="glass rounded-3xl p-6">
-                <p className="font-display text-4xl font-semibold text-gold-gradient">{f.value}</p>
+              <StaggerItem key={f.label} className="sm:border-r sm:border-hairline sm:pr-4 sm:last:border-0">
+                <p className="font-display text-4xl font-medium text-gold">{f.value}</p>
                 <p className="mt-3 text-sm font-medium">{f.label}</p>
                 <p className="text-xs text-muted-foreground">{f.detail}</p>
               </StaggerItem>
@@ -141,7 +141,7 @@ function AboutPage() {
         <Reveal>
           <p className="eyebrow flex items-center gap-3"><span className="text-gold">04</span><span className="h-px w-8 bg-gold/50" aria-hidden="true" />My approach to technology</p>
         </Reveal>
-        <h2 id="approach-title" className="mt-8 max-w-5xl text-[clamp(2rem,5vw,4.5rem)] leading-[1.05] font-medium">
+        <h2 id="approach-title" className="mt-8 max-w-5xl editorial-statement leading-[1.16] font-medium">
           <SplitText text="Understand the problem first. Choose the simplest tool that solves it." />{" "}
           <SplitText text="Then keep learning until there's a better one." delay={0.2} wordClassName="font-serif italic font-normal tracking-normal text-gold" />
         </h2>
@@ -149,18 +149,18 @@ function AboutPage() {
 
       {/* Values */}
       <section className="container-page mt-24" aria-label="Professional values">
-        <Stagger as="ol" className="grid border-t border-hairline md:grid-cols-2">
+        <Stagger as="ol" className="values-ledger grid border-t border-hairline">
           {values.map((v, i) => (
             <StaggerItem
               as="li"
               key={v.title}
-              className="group border-b border-hairline py-10 md:px-8 md:odd:border-r md:odd:pl-0"
+              className="group border-b border-hairline py-8"
             >
-              <div className="flex items-baseline gap-5">
+              <div className="grid items-baseline gap-5 sm:grid-cols-[3rem_1fr]">
                 <span className="font-serif text-2xl italic text-gold">0{i + 1}</span>
-                <div>
+                <div className="grid gap-4 md:grid-cols-2">
                   <h3 className="text-2xl font-medium transition-colors group-hover:text-gold">{v.title}</h3>
-                  <p className="mt-3 max-w-md leading-relaxed text-muted-foreground">{v.text}</p>
+                  <p className="max-w-md leading-relaxed text-muted-foreground">{v.text}</p>
                 </div>
               </div>
             </StaggerItem>

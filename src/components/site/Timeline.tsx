@@ -53,7 +53,7 @@ export function Timeline({ items }: { items: Milestone[] }) {
                 {m.org}
                 {m.place ? ` · ${m.place}` : ""}
               </p>
-              <div className={cn("glass mt-5 rounded-3xl p-6 text-left", !right && "md:ml-auto")}>
+              <div className={cn("mt-5 border-t border-hairline pt-6 text-left", !right && "md:ml-auto")}>
                 <p className="leading-relaxed text-muted-foreground">{m.summary}</p>
                 <ul className="mt-4 space-y-2">
                   {m.highlights.map((h) => (

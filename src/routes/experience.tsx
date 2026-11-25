@@ -52,8 +52,7 @@ function ExperiencePage() {
       {/* Featured role */}
       <section className="container-page" aria-labelledby="role-title">
         <Reveal y={40}>
-          <div className="glass relative overflow-hidden rounded-[2rem] p-6 sm:p-12">
-            <div className="pointer-events-none absolute -top-32 -right-20 size-96 rounded-full bg-gold/10 blur-[100px]" aria-hidden="true" />
+          <div className="role-ledger relative border-y border-hairline py-10 sm:py-12">
             <div className="relative grid gap-10 lg:grid-cols-12">
               <div className="lg:col-span-5">
                 <span className="inline-flex items-center gap-2 rounded-full bg-success/10 px-3 py-1 text-xs text-success">
@@ -71,13 +70,13 @@ function ExperiencePage() {
                   professional IT environment and applying what I learned during my DAE.
                 </p>
               </div>
-              <Stagger as="ul" className="grid gap-3 sm:grid-cols-2 lg:col-span-7">
+              <Stagger as="ul" className="grid lg:col-span-7">
                 {focusAreas.map(({ icon: Icon, title, text }) => (
                   <StaggerItem as="li" key={title}>
-                    <motion.div whileHover={{ y: -3 }} className="h-full rounded-2xl border border-hairline bg-background/30 p-5 transition-colors hover:border-gold/40">
+                    <motion.div whileHover={{ y: -3 }} className="role-focus grid h-full gap-x-5 border-b border-hairline py-5 transition-colors hover:border-gold/40 sm:grid-cols-[2rem_1fr]">
                       <Icon className="size-5 text-gold" aria-hidden="true" />
-                      <h3 className="mt-4 text-base font-medium tracking-tight">{title}</h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{text}</p>
+                      <h3 className="text-lg font-medium">{title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground sm:col-start-2">{text}</p>
                     </motion.div>
                   </StaggerItem>
                 ))}
@@ -90,10 +89,10 @@ function ExperiencePage() {
       {/* Education */}
       <section className="container-page mt-32 sm:mt-40" aria-labelledby="edu-title">
         <SectionHeading index="02" eyebrow="Education" title="The foundations." />
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="education-ledger mt-12 grid gap-6 md:grid-cols-[1.2fr_1fr]">
           {education.map((e, i) => (
             <Reveal key={e.id} delay={i * 0.1}>
-              <article className="h-full rounded-[1.75rem] border border-hairline bg-glass p-8 transition-colors duration-500 hover:border-gold/40">
+              <article className="h-full border-t border-gold/40 py-8 pr-6 transition-colors duration-500 hover:border-gold">
                 <div className="flex items-center justify-between">
                   <span className="eyebrow text-[0.62rem] text-gold">{e.status}</span>
                   <GraduationCap className="size-5 text-muted-foreground" aria-hidden="true" />

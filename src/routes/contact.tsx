@@ -93,7 +93,7 @@ function ContactPage() {
       <section className="container-page grid gap-10 lg:grid-cols-12" aria-label="Contact options">
         {/* Form */}
         <Reveal className="lg:col-span-7" y={40}>
-          <div className="glass relative overflow-hidden rounded-[2rem] p-6 sm:p-10">
+          <div className="glass-lens contact-desk relative overflow-hidden rounded-lg p-6 sm:p-10">
             <AnimatePresence mode="wait">
               {status.state === "success" ? (
                 <motion.div
@@ -166,7 +166,7 @@ function ContactPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 font-display text-sm font-medium text-primary-foreground shadow-[var(--shadow-gold)] transition-colors hover:bg-gold-soft disabled:opacity-70"
+                      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-primary px-7 font-display text-sm font-medium text-primary-foreground shadow-[var(--shadow-gold)] transition-colors hover:bg-gold-soft disabled:opacity-70"
                     >
                       {isSubmitting ? (
                         <>
@@ -195,14 +195,14 @@ function ContactPage() {
               <a
                 href={href}
                 {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group flex items-center gap-4 rounded-3xl border border-hairline bg-glass p-5 transition-colors duration-500 hover:border-gold/40"
+                className="group flex items-center gap-4 border-b border-hairline py-6 transition-colors duration-500 hover:border-gold"
               >
                 <span className="grid size-12 shrink-0 place-items-center rounded-full border border-hairline text-gold transition-colors group-hover:bg-gold group-hover:text-primary-foreground">
                   <Icon className="size-5" aria-hidden="true" />
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-xs text-muted-foreground">{label}</span>
-                  <span className="block truncate font-display text-base sm:text-lg">{value}</span>
+                  <span className="block break-all font-display text-base sm:text-lg">{value}</span>
                 </span>
                 <ArrowUpRight className="size-5 shrink-0 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold" aria-hidden="true" />
               </a>
@@ -216,7 +216,7 @@ function ContactPage() {
           </Reveal>
           {site.socials.others.length === 0 && (
             <Reveal delay={0.35}>
-              <div className="rounded-3xl border border-dashed border-hairline p-5 text-sm text-muted-foreground">
+              <div className="border-l border-dashed border-hairline pl-5 text-sm text-muted-foreground">
                 <PlaceholderTag>Placeholder</PlaceholderTag>
                 <p className="mt-3">More profiles (e.g. Fiverr, Upwork, Instagram) can be added here.</p>
               </div>
@@ -230,7 +230,7 @@ function ContactPage() {
 
 function inputCls(invalid: boolean) {
   return cn(
-    "block min-h-12 w-full rounded-2xl border bg-background/40 px-4 text-base text-foreground placeholder:text-muted-foreground/60 transition-colors focus:border-gold focus:outline-none focus-visible:outline-none",
+    "block min-h-12 w-full rounded-none border-0 border-b bg-background/20 px-3 text-base text-foreground placeholder:text-muted-foreground/60 transition-colors focus:border-gold focus:outline-none focus-visible:outline-none",
     invalid ? "border-destructive/70" : "border-hairline hover:border-foreground/25",
   );
 }

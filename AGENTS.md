@@ -37,3 +37,4 @@ use the editor.
 - Contact form validation is the shared zod schema in `src/lib/contact-schema.ts`, used by both the form and the server function, and mirrored by database CHECK constraints.
 - Contact messages are inserted from a server function with the publishable key under an insert-only RLS policy — no read access from the site.
 - Page entrance motion skips the first load (intro loader covers it) so SSR content is never hidden; reduced-motion is respected via `MotionConfig reducedMotion="user"` and CSS media queries.
+- Editorial presentation uses named layout classes in the global design system; reserve frosted surfaces for interactive detail panes and keep narrative sections unframed to avoid repeated card grids.

@@ -18,16 +18,15 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { BackToTop } from "@/components/site/BackToTop";
 import { PageTransition } from "@/components/site/PageTransition";
-import { Atmosphere, CursorAura, IntroLoader, ParticleField } from "@/components/site/Ambient";
+import { Atmosphere, CursorAura, IntroLoader } from "@/components/site/Ambient";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   const letters = ["4", "0", "4"];
   return (
     <section className="container-page relative flex min-h-[85vh] flex-col items-center justify-center pt-32 text-center">
-      <div className="pointer-events-none absolute top-1/3 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gold/10 blur-[120px]" aria-hidden="true" />
       <p className="eyebrow">Lost in the midnight universe</p>
-      <h1 className="mt-6 flex font-display text-[clamp(7rem,30vw,20rem)] leading-none font-semibold tracking-[-0.06em]" aria-label="404">
+      <h1 className="mt-6 flex font-display text-9xl leading-none font-medium sm:text-[16rem]" aria-label="404">
         {letters.map((l, i) => (
           <motion.span
             key={i}
@@ -170,7 +169,6 @@ function RootComponent() {
         </a>
         <IntroLoader />
         <Atmosphere />
-        <ParticleField />
         <CursorAura />
         <Header />
         <main id="main" className="relative z-10">

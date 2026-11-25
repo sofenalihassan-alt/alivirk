@@ -65,10 +65,12 @@ function Hero() {
   const d = introDelay();
 
   return (
-    <section ref={ref} className="container-page relative grid min-h-[100svh] items-center gap-12 pt-32 pb-16 lg:grid-cols-12 lg:gap-6 lg:pt-28">
-      <motion.div className="relative z-10 lg:col-span-7" style={{ y: yText, opacity: fade }}>
+    <section ref={ref} className="portrait-stage relative">
+      <motion.div className="portrait-stage-image" style={{ y: yVisual }}><HeroObject /></motion.div>
+      <div className="container-page portrait-stage-inner">
+      <motion.div className="portrait-stage-copy relative z-10" style={{ y: yText, opacity: fade }}>
         <motion.div
-          className="glass-subtle inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full px-4 py-2 text-xs text-muted-foreground"
+          className="inline-flex flex-wrap items-center gap-x-3 gap-y-1 border-l border-gold pl-4 text-xs text-muted-foreground"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: d, duration: 0.8 }}
@@ -82,10 +84,8 @@ function Hero() {
         </motion.div>
 
         <h1 className="mt-8">
-          <span className="block font-display text-[clamp(3.6rem,15vw,9.5rem)] leading-[0.86] font-semibold tracking-[-0.055em]">
-            <SplitText text="Ali Hassan" immediate delay={d + 0.1} className="text-fade" />
-          </span>
-          <span className="mt-6 block max-w-2xl text-[clamp(1.6rem,3.6vw,3rem)] leading-[1.05] font-medium tracking-[-0.03em]">
+          <span className="hero-name block font-display font-medium">Ali<br /><span className="font-serif font-normal italic text-gold">Hassan.</span></span>
+          <span className="hero-subtitle mt-6 block max-w-lg font-medium">
             <SplitText text="Building Digital Experiences." immediate delay={d + 0.35} />{" "}
             <SplitText
               text="Exploring What's Next."
@@ -97,7 +97,7 @@ function Hero() {
         </h1>
 
         <motion.p
-          className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+          className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: d + 0.8, duration: 0.9 }}
@@ -116,9 +116,7 @@ function Hero() {
         </motion.div>
       </motion.div>
 
-      <motion.div className="relative lg:col-span-5" style={{ y: yVisual }}>
-        <HeroObject />
-      </motion.div>
+      </div>
 
       <motion.div
         className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.65rem] tracking-[0.3em] text-muted-foreground uppercase lg:flex"
@@ -143,7 +141,7 @@ function Hero() {
 function Marquee() {
   const row = [...disciplines, ...disciplines];
   return (
-    <div className="relative z-10 overflow-hidden border-y border-hairline py-6" aria-hidden="true">
+    <div className="discipline-strip relative z-10 overflow-hidden border-y border-hairline py-5" aria-hidden="true">
       <div className="animate-marquee flex w-max gap-10">
         {row.map((d, i) => (
           <span key={i} className="flex items-center gap-10 font-display text-2xl font-medium whitespace-nowrap text-muted-foreground/70 sm:text-4xl">
@@ -169,7 +167,7 @@ function Intro() {
         </Reveal>
       </div>
       <div className="lg:col-span-8">
-        <h2 id="intro-title" className="text-[clamp(1.8rem,4vw,3.4rem)] leading-[1.12] font-medium tracking-[-0.03em]">
+        <h2 id="intro-title" className="editorial-statement leading-[1.18] font-medium">
           <SplitText text="I work where practical IT meets digital creativity —" />{" "}
           <SplitText text="keeping systems running by day," delay={0.1} wordClassName="text-muted-foreground" />{" "}
           <SplitText text="and building for the web beyond it." delay={0.2} wordClassName="font-serif italic font-normal tracking-normal text-gold" />
@@ -197,7 +195,8 @@ function Intro() {
 
 function ExpertisePreview() {
   const [active, setActive] = useState(0);
-  const cat = skillCategories[active] ?? skillCategories[0]!;
+  const cat = skillCategories[active] ?? skillCategories[0];
+  if (!cat) return null;
   return (
     <section className="container-page mt-32 sm:mt-44" aria-labelledby="expertise-title">
       <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
@@ -237,8 +236,7 @@ function ExpertisePreview() {
         </div>
 
         <div className="lg:col-span-6 lg:pl-8" id="expertise-panel" role="tabpanel" aria-live="polite">
-          <div className="glass relative min-h-[22rem] overflow-hidden rounded-3xl p-7 sm:p-10 lg:sticky lg:top-28">
-            <div className="pointer-events-none absolute -top-20 -right-20 size-60 rounded-full bg-gold/10 blur-3xl" aria-hidden="true" />
+          <div className="glass-lens relative min-h-[22rem] overflow-hidden rounded-lg p-7 sm:p-10 lg:sticky lg:top-28">
             <AnimatePresence mode="wait">
               <motion.div
                 key={cat.id}
@@ -256,7 +254,7 @@ function ExpertisePreview() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.05 * i }}
-                      className="rounded-full border border-hairline bg-glass px-4 py-2 text-sm"
+                      className="border-b border-hairline py-2 pr-4 text-sm"
                     >
                       {s.name}
                     </motion.li>
@@ -272,9 +270,10 @@ function ExpertisePreview() {
 }
 
 function FeaturedProject() {
-  const project = getProject("skill-serve")!;
+  const project = getProject("skill-serve");
+  if (!project) return null;
   return (
-    <section className="relative mt-32 sm:mt-44" aria-labelledby="featured-title">
+    <section className="featured-band relative mt-32 border-y border-hairline py-20 sm:mt-44 sm:py-28" aria-labelledby="featured-title">
       <div className="container-page">
         <SectionHeading
           index="03"
@@ -331,7 +330,7 @@ function JourneyPreview() {
           <CtaLink to="/experience" variant="glass">Full experience</CtaLink>
         </Reveal>
       </div>
-      <Stagger as="ol" className="relative mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <Stagger as="ol" className="journey-index relative mt-16 grid gap-0 md:grid-cols-2 xl:grid-cols-4">
         <div className="hairline-x absolute top-[1.15rem] right-0 left-0 hidden xl:block" aria-hidden="true" />
         {milestones.map((m, i) => (
           <StaggerItem as="li" key={m.id} className="relative">
@@ -341,7 +340,7 @@ function JourneyPreview() {
               </span>
               <span className="eyebrow text-[0.62rem]">{m.status}</span>
             </div>
-            <div className="mt-6 h-full rounded-3xl border border-hairline bg-glass p-6 transition-colors duration-500 hover:border-gold/40">
+            <div className="mt-6 border-t border-hairline py-7 pr-6 transition-colors duration-500 hover:border-gold">
               <p className="text-xs text-gold">{m.kind}</p>
               <h3 className="mt-2 text-xl leading-snug font-medium">{m.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{m.org}{m.place ? `, ${m.place}` : ""}</p>
@@ -377,19 +376,18 @@ function LearningInterests() {
             <CtaLink to="/learning" variant="glass">Learning roadmap</CtaLink>
           </Reveal>
         </div>
-        <Stagger as="ul" className="grid content-start gap-3 sm:grid-cols-2 lg:col-span-7">
+        <Stagger as="ul" className="learning-index grid content-start lg:col-span-7">
           {items.map((it, i) => (
             <StaggerItem as="li" key={it.label}>
               <motion.div
                 whileHover={{ y: -4 }}
                 className={cn(
-                  "group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-hairline p-6 transition-colors duration-500 hover:border-gold/40",
-                  i === 0 ? "glass" : "bg-glass",
+                  "group relative grid h-full items-center gap-3 border-b border-hairline py-6 pr-8 transition-colors duration-500 hover:border-gold/40 sm:grid-cols-[1fr_auto]",
                 )}
               >
-                <span className="eyebrow text-[0.6rem] text-gold">{it.stage}</span>
-                <span className="mt-10 font-display text-2xl font-medium tracking-tight">{it.label}</span>
-                <span className="absolute top-6 right-6 font-serif text-sm italic text-muted-foreground/60">0{i + 1}</span>
+                <span className="font-display text-xl font-medium transition-transform duration-500 group-hover:translate-x-2 sm:text-2xl">{it.label}</span>
+                <span className="text-xs text-gold">{it.stage}</span>
+                <span className="absolute top-1 right-0 font-serif text-xs italic text-muted-foreground/60">0{i + 1}</span>
               </motion.div>
             </StaggerItem>
           ))}

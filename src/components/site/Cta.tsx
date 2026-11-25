@@ -8,18 +8,18 @@ import type { NavPath } from "@/lib/site";
 type Variant = "gold" | "glass" | "ghost";
 
 const base =
-  "group relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 font-display text-sm font-medium tracking-tight transition-[background,color,box-shadow,border-color] duration-500";
+  "group relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-sm px-6 py-3 font-display text-sm font-medium transition-[background,color,box-shadow,border-color] duration-500";
 
 const variants: Record<Variant, string> = {
-  gold: "bg-primary text-primary-foreground shadow-[var(--shadow-gold)] hover:bg-gold-soft",
-  glass: "glass text-foreground hover:border-gold/50",
+  gold: "bg-primary text-primary-foreground hover:bg-gold-soft",
+  glass: "border-b border-gold/40 text-foreground hover:border-gold hover:bg-glass",
   ghost: "text-foreground hover:text-gold",
 };
 
 function Inner({ children, icon }: { children: ReactNode; icon: boolean }) {
   return (
     <>
-      <span className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-[linear-gradient(90deg,transparent,oklch(1_0_0/35%),transparent)] opacity-0 group-hover:opacity-100 group-hover:animate-[sheen_1.2s_ease]" />
+      <span className="pointer-events-none absolute inset-y-0 left-0 w-1/3 cta-sheen opacity-0 group-hover:opacity-100 group-hover:animate-[sheen_1.2s_ease]" />
       <span className="relative">{children}</span>
       {icon && (
         <ArrowUpRight

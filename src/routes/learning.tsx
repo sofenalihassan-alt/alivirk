@@ -70,8 +70,8 @@ function LearningPage() {
                   setSelected(0);
                 }}
                 className={cn(
-                  "relative flex items-center gap-4 rounded-3xl p-5 text-left transition-colors duration-500",
-                  on ? "glass border-gold/50" : "border border-hairline bg-background/60 hover:border-gold/30",
+                  "relative flex items-center gap-4 border-b-2 py-5 text-left transition-colors duration-500",
+                  on ? "border-gold text-foreground" : "border-hairline text-muted-foreground hover:border-gold/30",
                 )}
               >
                 <span className={cn("grid size-11 shrink-0 place-items-center rounded-full border transition-colors", on ? "border-gold bg-gold text-primary-foreground" : "border-hairline text-gold")}>
@@ -79,7 +79,7 @@ function LearningPage() {
                 </span>
                 <span>
                   <span className="block font-serif text-sm italic text-muted-foreground">Stage 0{i + 1}</span>
-                  <span className="block font-display text-sm font-semibold tracking-[0.16em] uppercase">{s}</span>
+                  <span className="block font-display text-sm font-medium">{s}</span>
                 </span>
               </button>
             );
@@ -116,16 +116,15 @@ function LearningPage() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.45 }}
-                  className="glass relative h-full overflow-hidden rounded-3xl p-7 sm:p-10"
+                  className="glass-lens learning-dossier relative h-full overflow-hidden rounded-lg p-7 sm:p-10"
                 >
-                  <div className="pointer-events-none absolute -right-16 -bottom-16 size-56 rounded-full bg-gold/10 blur-3xl" aria-hidden="true" />
                   <p className="eyebrow text-[0.62rem] text-gold">{current.stage}</p>
                   <h3 className="mt-4 text-3xl font-medium sm:text-4xl">{current.title}</h3>
                   <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{current.why}</p>
                   <p className="eyebrow mt-8 text-[0.6rem]">Focus</p>
                   <ul className="mt-3 flex flex-wrap gap-2">
                     {current.focus.map((f) => (
-                      <li key={f} className="rounded-full border border-hairline bg-glass px-4 py-2 text-sm">{f}</li>
+                      <li key={f} className="border-b border-hairline py-2 pr-4 text-sm">{f}</li>
                     ))}
                   </ul>
                 </motion.div>
@@ -144,16 +143,16 @@ function LearningPage() {
           accent="progress."
           intro="I'm writing about what I learn. These pieces are drafts — titles and outlines that will be published as I finish them."
         />
-        <Stagger as="ul" className="mt-12 grid gap-4 md:grid-cols-2">
+        <Stagger as="ul" className="notes-index mt-12 grid gap-0">
           {draftNotes.map((n, i) => (
             <StaggerItem as="li" key={n.title}>
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-hairline bg-glass p-7 transition-colors duration-500 hover:border-gold/40">
+              <article className="group relative grid h-full gap-x-10 border-b border-hairline py-8 transition-colors duration-500 hover:border-gold/40 md:grid-cols-[1fr_1.4fr]">
                 <div className="flex items-center justify-between gap-3">
                   <span className="eyebrow text-[0.6rem]">{n.topic}</span>
                   <PlaceholderTag>Draft</PlaceholderTag>
                 </div>
-                <h3 className="mt-8 text-2xl leading-snug font-medium transition-colors group-hover:text-gold">{n.title}</h3>
-                <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">{n.excerpt}</p>
+                <h3 className="mt-5 text-2xl leading-snug font-medium transition-colors group-hover:text-gold md:col-start-1">{n.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground md:col-start-2 md:row-start-2">{n.excerpt}</p>
                 <p className="mt-6 font-serif text-sm italic text-muted-foreground/70">Note 0{i + 1} · Coming soon</p>
               </article>
             </StaggerItem>

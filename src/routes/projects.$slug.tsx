@@ -76,7 +76,7 @@ function ProjectDetail() {
             <span className="eyebrow text-gold">{p.category}</span>
             {p.isPlaceholder && <PlaceholderTag />}
           </div>
-          <h1 className="mt-5 text-[clamp(3rem,10vw,8rem)] leading-[0.9] font-medium">
+          <h1 className="mt-5 page-title leading-[1.02] font-medium">
             <SplitText text={p.title} immediate />
           </h1>
           <Reveal className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">{p.summary}</Reveal>
@@ -108,7 +108,7 @@ function ProjectDetail() {
 
         <section className="container-page mt-24 grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <div className="glass rounded-3xl p-6 lg:sticky lg:top-28">
+            <div className="border-t border-gold py-6 lg:sticky lg:top-28">
               <dl className="space-y-6 text-sm">
                 <div>
                   <dt className="eyebrow text-[0.6rem]">Category</dt>
@@ -139,7 +139,7 @@ function ProjectDetail() {
             <h2 className="eyebrow mt-16">{p.isPlaceholder ? "Details to add" : "Key features"}</h2>
             <Stagger as="ul" className="mt-6 grid gap-3 sm:grid-cols-2">
               {p.features.map((f) => (
-                <StaggerItem as="li" key={f} className="flex items-start gap-3 rounded-2xl border border-hairline bg-glass p-4 text-sm">
+                <StaggerItem as="li" key={f} className="flex items-start gap-3 border-b border-hairline py-5 text-sm">
                   <Check className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
                   {f}
                 </StaggerItem>

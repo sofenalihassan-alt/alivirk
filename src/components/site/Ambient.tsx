@@ -28,11 +28,6 @@ export function CursorAura() {
     <>
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed top-0 left-0 z-0 size-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,oklch(0.79_0.09_85/9%),transparent_62%)]"
-        style={{ x: sx, y: sy }}
-      />
-      <motion.div
-        aria-hidden="true"
         className="pointer-events-none fixed top-0 left-0 z-[60] size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold mix-blend-difference"
         style={{ x: dx, y: dy }}
       />
@@ -110,11 +105,7 @@ export function ParticleField() {
 /** Fixed atmospheric backdrop: midnight gradients + grain. */
 export function Atmosphere() {
   return (
-    <div aria-hidden="true" className="grain pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      <div className="absolute -top-[20%] -left-[10%] h-[60vh] w-[60vw] rounded-full bg-[radial-gradient(closest-side,oklch(0.3_0.04_265/55%),transparent)] blur-3xl" />
-      <div className="absolute top-[30%] -right-[15%] h-[70vh] w-[50vw] rounded-full bg-[radial-gradient(closest-side,oklch(0.79_0.09_85/7%),transparent)] blur-3xl" />
-      <div className="absolute -bottom-[25%] left-[20%] h-[50vh] w-[60vw] rounded-full bg-[radial-gradient(closest-side,oklch(0.25_0.03_270/60%),transparent)] blur-3xl" />
-    </div>
+    <div aria-hidden="true" className="editorial-atmosphere grain pointer-events-none fixed inset-0 z-0" />
   );
 }
 

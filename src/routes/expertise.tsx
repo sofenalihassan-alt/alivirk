@@ -90,12 +90,12 @@ function ExpertisePage() {
                       setOpenKey(null);
                     }}
                     className={cn(
-                      "relative min-h-11 rounded-full px-5 text-sm whitespace-nowrap transition-colors",
-                      on ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground glass-subtle",
+                      "relative min-h-11 rounded-sm px-5 text-sm whitespace-nowrap transition-colors",
+                      on ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground",
                     )}
                   >
                     {on && (
-                      <motion.span layoutId="skill-filter" className="absolute inset-0 rounded-full bg-primary" transition={{ type: "spring", stiffness: 400, damping: 32 }} />
+                      <motion.span layoutId="skill-filter" className="absolute inset-0 rounded-sm bg-primary" transition={{ type: "spring", stiffness: 400, damping: 32 }} />
                     )}
                     <span className="relative flex items-center gap-2">
                       <span className="font-serif italic">{f.letter}</span>
@@ -123,7 +123,7 @@ function ExpertisePage() {
         </AnimatePresence>
 
         {/* Grid */}
-        <motion.ul layout className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.ul layout className="expertise-ledger mt-10 grid border-t border-hairline">
           <AnimatePresence mode="popLayout">
             {visible.map((s) => {
               const key = `${s.categoryId}-${s.name}`;
@@ -142,20 +142,20 @@ function ExpertisePage() {
                     onClick={() => setOpenKey(open ? null : key)}
                     aria-expanded={open}
                     className={cn(
-                      "group relative flex h-full w-full flex-col overflow-hidden rounded-3xl p-6 text-left transition-colors duration-500",
-                      open ? "glass border-gold/40" : "border border-hairline bg-glass hover:border-gold/30",
+                      "skill-row group relative grid w-full gap-4 border-b border-hairline py-6 text-left transition-colors duration-500 sm:grid-cols-[1fr_1.3fr_auto]",
+                      open ? "bg-glass" : "hover:bg-glass",
                     )}
                   >
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="eyebrow text-[0.6rem]">
+                    <div className="flex items-center justify-between gap-4 sm:contents">
+                      <span className="text-xs text-muted-foreground sm:col-start-1 sm:row-start-1">
                         <span className="font-serif text-sm normal-case italic text-gold">{s.letter}</span> · {s.categoryTitle}
                       </span>
-                      <motion.span animate={{ rotate: open ? 45 : 0 }} className="grid size-8 shrink-0 place-items-center rounded-full border border-hairline">
+                      <motion.span animate={{ rotate: open ? 45 : 0 }} className="grid size-8 shrink-0 place-items-center rounded-full border border-hairline sm:col-start-3 sm:row-start-1">
                         <Plus className="size-4" aria-hidden="true" />
                       </motion.span>
                     </div>
-                    <h3 className="mt-8 text-2xl font-medium tracking-tight">{s.name}</h3>
-                    <span className={cn("mt-4 inline-flex w-fit rounded-full px-3 py-1 text-[0.7rem] font-medium", levelStyle[s.level])}>{s.level}</span>
+                    <h3 className="text-2xl font-medium transition-transform duration-500 group-hover:translate-x-2 sm:col-start-2 sm:row-start-1">{s.name}</h3>
+                    <span className={cn("inline-flex w-fit rounded-sm px-3 py-1 text-[0.7rem] font-medium sm:col-start-2", levelStyle[s.level])}>{s.level}</span>
                     <AnimatePresence initial={false}>
                       {open && (
                         <motion.p
@@ -163,13 +163,12 @@ function ExpertisePage() {
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.4 }}
-                          className="overflow-hidden"
+                          className="overflow-hidden sm:col-start-2 sm:col-span-2"
                         >
                           <span className="block pt-5 leading-relaxed text-muted-foreground">{s.description}</span>
                         </motion.p>
                       )}
                     </AnimatePresence>
-                    {!open && <span className="mt-5 text-xs text-muted-foreground/70">Tap for details</span>}
                   </button>
                 </motion.li>
               );
@@ -178,7 +177,7 @@ function ExpertisePage() {
         </motion.ul>
 
         <Reveal className="mt-16">
-          <div className="glass-subtle rounded-3xl p-6 text-sm leading-relaxed text-muted-foreground sm:p-8">
+          <div className="border-l border-gold pl-6 text-sm leading-relaxed text-muted-foreground">
             <span className="text-foreground">A note on honesty:</span> I don't list proficiency percentages or certifications I
             don't hold. "Currently exploring" means exactly that — areas I'm studying, not services I offer yet.
           </div>

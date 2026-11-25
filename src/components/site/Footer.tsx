@@ -6,7 +6,6 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="relative mt-32 overflow-hidden border-t border-hairline">
-      <div className="pointer-events-none absolute -bottom-40 left-1/2 h-80 w-[60rem] -translate-x-1/2 rounded-full bg-gold/10 blur-[140px]" aria-hidden="true" />
       <div className="container-page relative py-16 sm:py-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
@@ -79,7 +78,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 select-none font-display text-[clamp(3.5rem,17vw,15rem)] font-semibold leading-[0.8] tracking-[-0.05em] text-fade opacity-60" aria-hidden="true">
+        <div className="footer-signature mt-16 select-none font-serif italic leading-[1] text-gold/40" aria-hidden="true">
           Ali Hassan
         </div>
 

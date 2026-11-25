@@ -76,7 +76,7 @@
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.5rem;
 
   /* Midnight surfaces */
   --background: oklch(0.135 0.006 275); /* #08090D */
@@ -132,6 +132,14 @@
   --gradient-text: linear-gradient(180deg, var(--foreground) 30%, oklch(0.97 0.002 286 / 55%));
   --shadow-glass: 0 1px 0 0 oklch(1 0 0 / 8%) inset, 0 30px 60px -30px oklch(0 0 0 / 70%);
   --shadow-gold: 0 18px 50px -18px oklch(0.79 0.09 85 / 45%);
+  --gradient-lens: linear-gradient(135deg, oklch(1 0 0 / 10%), oklch(1 0 0 / 3%) 48%, oklch(0.79 0.09 85 / 7%));
+  --shadow-lens: inset 0 1px 0 oklch(1 0 0 / 18%), inset 1px 0 0 oklch(1 0 0 / 5%), 0 24px 64px -32px oklch(0 0 0 / 65%);
+  --gradient-cover: linear-gradient(90deg, var(--background) 0%, oklch(0.135 0.006 275 / 92%) 6%, transparent 35%), linear-gradient(0deg, var(--background), transparent 25%);
+  --gradient-portrait: linear-gradient(0deg, var(--background), transparent 40%);
+  --gradient-sheen: linear-gradient(90deg, transparent, oklch(1 0 0 / 35%), transparent);
+  --gradient-band: linear-gradient(120deg, var(--surface), var(--background) 65%);
+  --gradient-atmosphere: linear-gradient(120deg, var(--surface) 0%, var(--background) 50%);
+  --grid-line: oklch(1 0 0 / 3%);
 
   color-scheme: dark;
 }
@@ -168,7 +176,7 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
   }
 
   ::selection {
@@ -221,7 +229,7 @@
   font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.28em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--muted-foreground);
 }
@@ -254,6 +262,89 @@
   @media (min-width: 1280px) {
     padding-inline: 3rem;
   }
+}
+
+/* Editorial system: unframed compositions, glass reserved for working surfaces. */
+@utility glass-lens {
+  background: var(--gradient-lens);
+  border: 1px solid var(--hairline);
+  backdrop-filter: blur(32px) saturate(125%);
+  box-shadow: var(--shadow-lens);
+}
+
+.cta-sheen { background: var(--gradient-sheen); }
+.portrait-shade { background: var(--gradient-portrait); }
+.editorial-atmosphere { background: var(--gradient-atmosphere); }
+.featured-band, .contact-invitation { background: var(--gradient-band); }
+.portrait-stage { min-height: 790px; overflow: hidden; }
+.portrait-stage-inner { position: relative; min-height: 790px; display: flex; align-items: center; padding-top: 122px; padding-bottom: 72px; }
+.portrait-stage-copy { width: 56%; }
+.hero-name { font-size: 112px; line-height: .94; }
+.hero-subtitle { font-size: 25px; line-height: 1.22; }
+.portrait-stage-image { position: absolute; inset: 0 0 0 40%; }
+.portrait-cover-mask { background: var(--gradient-cover); }
+.portrait-caption { right: 8%; bottom: 9%; max-width: 360px; }
+.discipline-strip { background: var(--background); }
+.page-title { font-size: 86px; line-height: 1.07; overflow-wrap: anywhere; }
+.section-title { font-size: 54px; }
+.editorial-statement { font-size: 46px; }
+.invitation-title { font-size: 70px; line-height: 1.12; }
+.invitation-mark { font-size: 240px; line-height: 1; }
+.footer-signature { font-size: 138px; }
+.page-masthead .masthead-aside { border-left: 1px solid var(--hairline); padding-left: 24px; padding-bottom: 12px; }
+.page-masthead:before { content: ''; position: absolute; width: 80px; height: 80px; right: 3rem; top: 8rem; border-top: 1px solid var(--hairline); border-right: 1px solid var(--hairline); pointer-events: none; }
+.expertise-ledger .skill-row { padding-inline: 14px; }
+.project-archive > li:nth-child(even) { margin-top: 80px; }
+.journey-index > li { padding-right: 20px; }
+.journey-index > div { display: none; }
+.academic-ledger p:first-child { font-variant-numeric: tabular-nums; }
+.role-focus > svg { grid-row: span 2; margin-top: 3px; }
+.learning-dossier:after { content: ''; position: absolute; pointer-events: none; inset: 18px; border: 1px solid var(--hairline); clip-path: polygon(90% 0, 100% 0, 100% 15%, 90% 15%); }
+.contact-desk { border-top-color: var(--gold); }
+.contact-desk input:focus, .contact-desk textarea:focus { background: var(--glass); }
+.contact-desk form > div:last-child { border-top: 1px solid var(--hairline); padding-top: 24px; }
+.skill-row:focus-visible { outline-offset: -2px; }
+/* Remove tracking utilities inherited from the original display system. */
+h1, h2, h3, h4, .font-display, .eyebrow, .intro-mark { letter-spacing: 0 !important; }
+
+@media (min-width: 1440px) {
+  .portrait-stage, .portrait-stage-inner { min-height: 850px; }
+  .hero-name { font-size: 136px; }
+  .page-title { font-size: 104px; }
+}
+@media (min-width: 1920px) {
+  .portrait-stage-image { left: 46%; right: max(0px, calc((100vw - 1600px) / 2)); }
+}
+@media (max-width: 1023px) {
+  .portrait-stage, .portrait-stage-inner { min-height: 760px; }
+  .hero-name { font-size: 96px; }
+  .portrait-stage-copy { width: 64%; }
+  .portrait-stage-image { left: 36%; }
+  .portrait-caption { right: 5%; bottom: 6%; max-width: 280px; }
+  .page-title { font-size: 72px; }
+  .page-masthead .masthead-aside { max-width: 620px; }
+  .section-title { font-size: 44px; }
+}
+@media (max-width: 639px) {
+  .portrait-stage, .portrait-stage-inner { min-height: 960px; }
+  .portrait-stage-inner { align-items: flex-start; padding-top: 120px; }
+  .portrait-stage-copy { width: 100%; }
+  .hero-name { font-size: 76px; }
+  .hero-subtitle { font-size: 21px; max-width: 320px; }
+  .portrait-stage-copy > p { max-width: 300px; }
+  .portrait-stage-image { left: 0; top: 500px; bottom: -20px; }
+  .portrait-cover img { object-position: 50% 24%; }
+  .portrait-cover-mask { background: linear-gradient(180deg, var(--background), transparent 22%), var(--gradient-portrait); }
+  .portrait-caption { right: 20px; bottom: 48px; left: 20px; max-width: none; }
+  .page-title { font-size: 48px; }
+  .section-title { font-size: 36px; }
+  .editorial-statement { font-size: 30px; }
+  .invitation-title { font-size: 40px; }
+  .invitation-mark { font-size: 140px; }
+  .footer-signature { font-size: 60px; }
+  .project-archive > li:nth-child(even) { margin-top: 0; }
+  .page-masthead:before { right: 20px; width: 40px; height: 40px; }
+  .expertise-ledger .skill-row { padding-inline: 0; }
 }
 
 /* ---------- Keyframes ---------- */

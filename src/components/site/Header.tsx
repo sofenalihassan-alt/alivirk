@@ -45,8 +45,8 @@ export function Header() {
         <div className="container-page pt-4">
           <div
             className={cn(
-              "flex items-center justify-between gap-4 rounded-full px-3 py-2 transition-all duration-500 sm:px-4",
-              scrolled || open ? "glass" : "border border-transparent",
+              "flex items-center justify-between gap-4 rounded-md px-3 py-2 transition-all duration-500 sm:px-4",
+              scrolled || open ? "glass-lens" : "border-b border-hairline",
             )}
           >
             <Wordmark />
@@ -62,7 +62,7 @@ export function Header() {
                         <Link
                           to={item.to}
                           className={cn(
-                            "relative z-10 block rounded-full px-4 py-2 text-sm transition-colors duration-300",
+                            "relative z-10 block px-3 py-2 text-sm transition-colors duration-300",
                             active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                           )}
                           aria-current={active ? "page" : undefined}
@@ -72,11 +72,11 @@ export function Header() {
                         {active && (
                           <motion.span
                             layoutId="nav-indicator"
-                            className="absolute inset-0 rounded-full bg-glass-strong ring-1 ring-hairline"
+                            className="absolute inset-x-3 bottom-0 h-px bg-gold"
                             transition={{ type: "spring", stiffness: 380, damping: 32 }}
                             aria-hidden="true"
                           >
-                            <span className="absolute -bottom-px left-1/2 h-px w-6 -translate-x-1/2 bg-gold" />
+                            <span className="sr-only">Active page</span>
                           </motion.span>
                         )}
                       </li>
@@ -88,7 +88,7 @@ export function Header() {
             <div className="flex items-center gap-2">
               <Link
                 to="/contact"
-                className="hidden min-h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-gold-soft sm:inline-flex"
+                className="hidden min-h-10 items-center gap-2 rounded-sm bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-gold-soft sm:inline-flex"
               >
                 <span className="relative flex size-2">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary-foreground/50" />
@@ -140,7 +140,7 @@ export function Header() {
                         <span className="font-display text-xs text-gold">0{i + 1}</span>
                         <span
                           className={cn(
-                            "font-display text-[clamp(2rem,9vw,3.5rem)] font-medium leading-none tracking-tight transition-colors",
+                            "font-display text-3xl font-medium leading-none sm:text-5xl transition-colors",
                             active ? "text-foreground" : "text-muted-foreground group-hover:text-foreground",
                           )}
                         >
