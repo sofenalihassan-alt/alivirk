@@ -2,7 +2,7 @@ import { motion, useMotionValue, useSpring } from "motion/react";
 import { useRef, type ReactNode, type PointerEvent } from "react";
 
 /** Gently pulls its child toward the pointer on fine-pointer devices. */
-export function Magnetic({ children, strength = 0.3, className }: { children: ReactNode; strength?: number; className?: string | undefined }) {
+export function Magnetic({ children, strength = 0.4, className }: { children: ReactNode; strength?: number; className?: string | undefined }) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);

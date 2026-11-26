@@ -24,7 +24,7 @@ function Inner({ children, icon }: { children: ReactNode; icon: boolean }) {
       {icon && (
         <ArrowUpRight
           aria-hidden="true"
-          className="relative size-4 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+          className="relative size-4 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-110"
         />
       )}
     </>

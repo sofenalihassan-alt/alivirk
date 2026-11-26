@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import portrait from "@/assets/ali-hassan-portrait.webp.asset.json";
+import portrait from "@/assets/ali-hassan-suit-portrait.webp.asset.json";
 import { site } from "@/lib/site";
 
 /** Unframed photographic cover, with a restrained frosted caption. */
@@ -14,13 +14,14 @@ export function HeroObject() {
     <div ref={ref} className="portrait-cover relative size-full">
       <motion.img
         src={portrait.url}
-        alt="Portrait of Ali Hassan wearing a blue kurta"
-        width={900}
-        height={1037}
+        alt="Ali Hassan in a black three-piece suit, white shirt and tinted glasses"
+        width={1168}
+        height={1346}
         fetchPriority="high"
         className="size-full object-cover object-top"
         style={reduced ? {} : { scale }}
       />
+      {!reduced && <div className="portrait-sweep pointer-events-none absolute inset-0" aria-hidden="true" />}
       <div className="portrait-cover-mask pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="portrait-caption glass-lens absolute rounded-sm px-5 py-4">
         <p className="flex items-center gap-2 text-xs text-foreground">

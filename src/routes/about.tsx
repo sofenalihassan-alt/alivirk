@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import portrait from "@/assets/ali-hassan-portrait.webp.asset.json";
+import portrait from "@/assets/ali-hassan-suit-portrait.webp.asset.json";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { CountUp } from "@/components/motion/CountUp";
 import { SplitText } from "@/components/motion/SplitText";
 import { ContactInvite } from "@/components/site/ContactInvite";
 import { PageHeader } from "@/components/site/PageHeader";
@@ -55,12 +56,12 @@ function AboutPage() {
       {/* Background — editorial split */}
       <section className="container-page grid gap-12 lg:grid-cols-12" aria-labelledby="bg-title">
         <div ref={imgRef} className="relative lg:col-span-5">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-sm lg:sticky lg:top-28">
+          <motion.div initial={{ clipPath: "inset(100% 0 0 0)" }} whileInView={{ clipPath: "inset(0% 0 0 0)" }} viewport={{ once: true }} transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }} className="relative aspect-[4/5] overflow-hidden rounded-sm lg:sticky lg:top-28">
             <motion.img
               src={portrait.url}
-              alt="Ali Hassan"
-              width={900}
-              height={1037}
+              alt="Ali Hassan in a black three-piece suit and tinted glasses"
+              width={1168}
+              height={1346}
               loading="lazy"
               style={{ y, scale: 1.18 }}
               className="size-full object-cover object-top"
@@ -70,7 +71,7 @@ function AboutPage() {
               <p className="eyebrow text-[0.6rem] text-gold">Ali Hassan</p>
               <p className="mt-1 text-sm">ICT Apprentice · Freelancer · Computing student</p>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className="space-y-16 lg:col-span-7 lg:pt-6">
           <div>
@@ -92,7 +93,7 @@ function AboutPage() {
           <Stagger className="academic-ledger grid gap-6 border-y border-hairline py-8 sm:grid-cols-3">
             {academicFacts.map((f) => (
               <StaggerItem key={f.label} className="sm:border-r sm:border-hairline sm:pr-4 sm:last:border-0">
-                <p className="font-display text-4xl font-medium text-gold">{f.value}</p>
+                <p className="font-display text-4xl font-medium text-gold"><CountUp value={f.value} />{f.value === "2,125" && <span className="ml-1 text-lg text-muted-foreground">/ 2,250</span>}</p>
                 <p className="mt-3 text-sm font-medium">{f.label}</p>
                 <p className="text-xs text-muted-foreground">{f.detail}</p>
               </StaggerItem>

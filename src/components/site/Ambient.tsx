@@ -80,7 +80,7 @@ export function ParticleField() {
         if (p.x > 1.02) p.x = -0.02;
         ctx.beginPath();
         ctx.arc(p.x * w, p.y * h, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.gold ? `rgba(214,184,117,${p.a})` : `rgba(245,245,247,${p.a * 0.6})`;
+        ctx.fillStyle = p.gold ? `rgba(140,150,255,${p.a})` : `rgba(245,245,247,${p.a * 0.6})`;
         ctx.fill();
       }
       raf = requestAnimationFrame(tick);

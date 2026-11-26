@@ -18,6 +18,15 @@ export function PageTransition({ children }: { children: ReactNode }) {
       {!isFirst && (
         <motion.div
           aria-hidden="true"
+          className="page-curtain pointer-events-none fixed inset-0 z-[69] origin-top"
+          initial={{ scaleY: 1 }}
+          animate={{ scaleY: 0 }}
+          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+        />
+      )}
+      {!isFirst && (
+        <motion.div
+          aria-hidden="true"
           className="pointer-events-none fixed inset-x-0 top-0 z-[70] h-[2px] origin-left bg-[linear-gradient(90deg,transparent,var(--gold),transparent)]"
           initial={{ scaleX: 0, opacity: 1 }}
           animate={{ scaleX: 1, opacity: 0 }}
