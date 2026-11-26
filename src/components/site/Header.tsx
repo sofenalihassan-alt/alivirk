@@ -121,7 +121,7 @@ export function Header() {
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           >
-            <nav aria-label="Mobile" className="container-page flex flex-1 flex-col justify-center pt-24 pb-10">
+            <nav aria-label="Mobile" className="container-page mobile-nav-safe flex flex-1 flex-col justify-center pt-24 pb-10 overflow-y-auto">
               <ul className="space-y-1">
                 {navItems.map((item, i) => {
                   const active = isActive(item.to);
