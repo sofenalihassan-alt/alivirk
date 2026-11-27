@@ -1,7 +1,7 @@
 # Roadmap
 
-- [ ] Creative-direction review and editorial redesign across every page
-- [ ] Verify redesigned navigation, filters, expanded details, contact form, and phone layouts
+- [x] Creative-direction review and editorial redesign across every page
+- [x] Verify redesigned navigation, filters, expanded details, contact form, and phone layouts
 
 - [x] Build all 8 pages (home, about, expertise, projects + detail, experience, learning, contact, 404)
 - [x] Contact form saves messages (Lovable Cloud)

@@ -9,6 +9,7 @@ import { CtaAnchor } from "@/components/site/Cta";
 import { PageHeader } from "@/components/site/PageHeader";
 import { PlaceholderTag } from "@/components/site/Placeholder";
 import { projectCategories, projects, type Project } from "@/data/projects";
+import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/projects/")({
@@ -137,7 +138,7 @@ function ProjectsPage() {
         <Reveal className="mt-12">
           <p className="text-sm text-muted-foreground">
             More work is on its way. You can also follow what I'm building on{" "}
-            <a href="https://github.com/sofenalihassan-alt" target="_blank" rel="noopener noreferrer" className="text-gold underline-offset-4 hover:underline">
+            <a href={site.socials.github} target="_blank" rel="noopener noreferrer" className="text-gold underline-offset-4 hover:underline">
               GitHub
             </a>
             .

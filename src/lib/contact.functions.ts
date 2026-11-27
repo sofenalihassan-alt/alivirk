@@ -6,7 +6,7 @@ import { contactSchema } from "./contact-schema";
 export type ContactResult = { ok: true } | { ok: false; error: string };
 
 export const submitContactMessage = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => contactSchema.parse(data))
+  .validator((data: unknown) => contactSchema.parse(data))
   .handler(async ({ data }): Promise<ContactResult> => {
     // Bots fill the hidden field; pretend success so they don't retry.
     if (data.website) return { ok: true };
