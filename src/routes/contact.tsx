@@ -195,7 +195,7 @@ function ContactPage() {
               <a
                 href={href}
                 {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group flex items-center gap-4 border-b border-hairline py-6 transition-colors duration-500 hover:border-gold"
+                className="group flex min-h-16 items-center gap-4 border-b border-hairline py-6 transition-colors max-sm:rounded-sm max-sm:border max-sm:bg-glass max-sm:px-4 max-sm:py-5 max-sm:active:border-gold duration-500 hover:border-gold"
               >
                 <span className="grid size-12 shrink-0 place-items-center rounded-full border border-hairline text-gold transition-colors group-hover:bg-gold group-hover:text-primary-foreground">
                   <Icon className="size-5" aria-hidden="true" />
@@ -209,7 +209,7 @@ function ContactPage() {
             </Reveal>
           ))}
           <Reveal delay={0.3}>
-            <button type="button" onClick={copyEmail} className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-gold">
+            <button type="button" onClick={copyEmail} className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-gold">
               <Copy className="size-4" aria-hidden="true" />
               {copied ? "Email copied!" : "Copy email address"}
             </button>

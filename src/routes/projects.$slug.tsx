@@ -80,7 +80,7 @@ function ProjectDetail() {
             <SplitText text={p.title} immediate />
           </h1>
           <Reveal className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">{p.summary}</Reveal>
-          <Reveal delay={0.1} className="mt-8 flex flex-wrap gap-3">
+          <Reveal delay={0.1} className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>*]:justify-center">
             {p.liveUrl ? (
               <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 font-display text-sm font-medium text-primary-foreground transition-colors hover:bg-gold-soft">
                 <Globe className="size-4" aria-hidden="true" /> Visit live site
@@ -109,7 +109,7 @@ function ProjectDetail() {
         <section className="container-page mt-24 grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <div className="border-t border-gold py-6 lg:sticky lg:top-28">
-              <dl className="space-y-6 text-sm">
+              <dl className="grid gap-6 text-sm sm:grid-cols-3 lg:block lg:space-y-6">
                 <div>
                   <dt className="eyebrow text-[0.6rem]">Category</dt>
                   <dd className="mt-2">{p.category}</dd>

@@ -74,7 +74,7 @@ function ExpertisePage() {
         </Reveal>
 
         {/* Filters */}
-        <div className="-mx-5 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0" role="tablist" aria-label="Filter by category">
+        <div className="-mx-5 snap-x snap-mandatory overflow-x-auto scroll-px-5 px-5 pb-2 [scrollbar-width:none] sm:mx-0 sm:px-0" role="tablist" aria-label="Filter by category">
           <LayoutGroup id="skill-filters">
             <div className="flex w-max gap-2">
               {filters.map((f) => {
@@ -90,7 +90,7 @@ function ExpertisePage() {
                       setOpenKey(null);
                     }}
                     className={cn(
-                      "relative min-h-11 rounded-sm px-5 text-sm whitespace-nowrap transition-colors",
+                      "relative min-h-11 snap-start rounded-sm px-5 text-sm whitespace-nowrap transition-colors",
                       on ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground",
                     )}
                   >
@@ -142,7 +142,7 @@ function ExpertisePage() {
                     onClick={() => setOpenKey(open ? null : key)}
                     aria-expanded={open}
                     className={cn(
-                      "skill-row group relative grid w-full gap-4 border-b border-hairline py-6 text-left transition-colors duration-500 sm:grid-cols-[1fr_1.3fr_auto]",
+                      "skill-row group relative grid w-full gap-3 border-b border-hairline py-5 text-left sm:gap-4 sm:py-6 transition-colors duration-500 sm:grid-cols-[1fr_1.3fr_auto]",
                       open ? "bg-glass" : "hover:bg-glass",
                     )}
                   >
@@ -154,7 +154,7 @@ function ExpertisePage() {
                         <Plus className="size-4" aria-hidden="true" />
                       </motion.span>
                     </div>
-                    <h3 className="text-2xl font-medium transition-transform duration-500 group-hover:translate-x-2 sm:col-start-2 sm:row-start-1">{s.name}</h3>
+                    <h3 className="text-xl font-medium transition-transform sm:text-2xl duration-500 group-hover:translate-x-2 sm:col-start-2 sm:row-start-1">{s.name}</h3>
                     <span className={cn("inline-flex w-fit rounded-sm px-3 py-1 text-[0.7rem] font-medium sm:col-start-2", levelStyle[s.level])}>{s.level}</span>
                     <AnimatePresence initial={false}>
                       {open && (

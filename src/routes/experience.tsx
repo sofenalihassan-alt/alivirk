@@ -70,7 +70,7 @@ function ExperiencePage() {
                   professional IT environment and applying what I learned during my DAE.
                 </p>
               </div>
-              <Stagger as="ul" className="grid lg:col-span-7">
+              <Stagger as="ul" className="grid md:grid-cols-2 md:gap-x-8 lg:col-span-7 lg:grid-cols-1">
                 {focusAreas.map(({ icon: Icon, title, text }) => (
                   <StaggerItem as="li" key={title}>
                     <motion.div whileHover={{ y: -3 }} className="role-focus grid h-full gap-x-5 border-b border-hairline py-5 transition-colors hover:border-gold/40 sm:grid-cols-[2rem_1fr]">
