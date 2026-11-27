@@ -34,7 +34,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
         />
       )}
       <motion.div
-        initial={isFirst ? false : { opacity: 0, y: 24, filter: "blur(8px)" }}
+        initial={isFirst ? false : { opacity: 0, y: 16, filter: typeof window !== "undefined" && window.innerWidth < 640 ? "blur(0px)" : "blur(8px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >

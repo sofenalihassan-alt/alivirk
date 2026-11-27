@@ -54,7 +54,7 @@ function LearningPage() {
       <section className="container-page" aria-labelledby="roadmap-title">
         <h2 id="roadmap-title" className="sr-only">Learning roadmap</h2>
         {/* Stage selector as a connected path */}
-        <div className="relative grid gap-3 sm:grid-cols-3" role="tablist" aria-label="Roadmap stages">
+        <div className="relative -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 [scrollbar-width:none]" role="tablist" aria-label="Roadmap stages">
           <div className="hairline-x absolute top-1/2 right-[16%] left-[16%] hidden sm:block" aria-hidden="true" />
           {roadmapStages.map((s, i) => {
             const Icon = stageIcon[s];
@@ -70,7 +70,7 @@ function LearningPage() {
                   setSelected(0);
                 }}
                 className={cn(
-                  "relative flex items-center gap-4 border-b-2 py-5 text-left transition-colors duration-500",
+                  "relative flex min-w-[78%] shrink-0 snap-start items-center gap-4 border-b-2 py-5 text-left transition-colors duration-500 sm:min-w-0",
                   on ? "border-gold text-foreground" : "border-hairline text-muted-foreground hover:border-gold/30",
                 )}
               >

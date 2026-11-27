@@ -10,7 +10,7 @@ export function Magnetic({ children, strength = 0.4, className }: { children: Re
   const sy = useSpring(y, { stiffness: 220, damping: 18, mass: 0.4 });
 
   const onMove = (e: PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "mouse" || !ref.current) return;
+    if (e.pointerType !== "mouse" || !ref.current || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     const r = ref.current.getBoundingClientRect();
     x.set((e.clientX - (r.left + r.width / 2)) * strength);
     y.set((e.clientY - (r.top + r.height / 2)) * strength);

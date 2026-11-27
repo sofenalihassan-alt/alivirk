@@ -46,7 +46,7 @@ export function Header() {
           <div
             className={cn(
               "flex items-center justify-between gap-4 rounded-md px-3 py-2 transition-all duration-500 sm:px-4",
-              scrolled || open ? "glass-lens" : "border-b border-hairline",
+              scrolled || open ? "glass-lens" : "border-b border-hairline bg-background/55 backdrop-blur-md",
             )}
           >
             <Wordmark />
